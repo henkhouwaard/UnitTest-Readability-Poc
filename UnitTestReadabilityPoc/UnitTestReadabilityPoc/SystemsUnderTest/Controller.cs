@@ -7,12 +7,14 @@ namespace UnitTestReadabilityPoc.SystemsUnderTest
     public class Controller
     {
         private readonly IRepository _repository;
+        private readonly IDateProvider _dateProvider;
 
         public const string SUFFIX = "controllersuffix";
 
-        public Controller(IRepository repository)
+        public Controller(IRepository repository, IDateProvider dateProvider)
         {
             _repository = repository;
+            _dateProvider = dateProvider;
         }
 
         public void SaveString(string stringToSave)
