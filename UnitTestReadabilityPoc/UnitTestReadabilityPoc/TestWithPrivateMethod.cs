@@ -31,6 +31,8 @@ namespace UnitTestReadabilityPoc
         public void GetStringById_RepoNotSetup_SuffixesAutoFixtureString()
         {
             var sut = CreateController();
+            _repositoryMock.Setup(repository => repository.GetStringById(It.IsAny<int>()))
+                         .Returns(_fixture.Create<string>());
 
             var idToGet = _fixture.Create<int>();
             string actual = sut.GetStringById(idToGet);

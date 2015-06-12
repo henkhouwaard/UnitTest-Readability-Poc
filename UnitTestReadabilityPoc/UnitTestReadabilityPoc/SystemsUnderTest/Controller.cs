@@ -25,6 +25,10 @@ namespace UnitTestReadabilityPoc.SystemsUnderTest
         public string GetStringById(int id)
         {
             string stringFromRepo = _repository.GetStringById(id);
+            if(stringFromRepo == null)
+            {
+                throw new Exception();
+            }
             return String.Concat(stringFromRepo, SUFFIX);
         }
     }

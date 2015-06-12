@@ -27,6 +27,8 @@ namespace UnitTestReadabilityPoc
         {
             var repositoryMock = new Mock<IRepository>();
             var dateProviderMock = new Mock<IDateProvider>();
+            repositoryMock.Setup(repository => repository.GetStringById(It.IsAny<int>()))
+                          .Returns(_fixture.Create<string>());
             var sut = new Controller(repositoryMock.Object, dateProviderMock.Object);
 
             var idToGet = _fixture.Create<int>();
